@@ -3,7 +3,7 @@ var SSH = require('simple-ssh');
 var rexec = require('remote-exec');
 
 module.exports = {
-    getTranslateServiceEnToSinhala(input, callback) {
+    getnerServiceSinhalaEngish(input, callback) {
           var ssh = new SSH({
             host: 'enter_host',
             user: 'enter_username',
@@ -22,8 +22,8 @@ module.exports = {
             ];
         
             var cmds = [
-                'echo '+input+' > /userdirs/ram_coders/DEEP/get_translate/translate_input.txt',
-                'bash /userdirs/ram_coders/DEEP/get_translate/get-translate.sh'
+                'echo '+input+' > /userdirs/ram_coders/ner/input.txt',
+                'bash /userdirs/ram_coders/ner/env.sh',
             ];
 
             
@@ -35,7 +35,7 @@ module.exports = {
                     console.log("Success");
                     function execShellCommand() {
                         return new Promise((resolve, reject) => {
-                          ssh.exec('tail -f /userdirs/ram_coders/DEEP/get_translate/translation_output.txt', {
+                          ssh.exec('tail -f /userdirs/ram_coders/ner/output.txt', {
                             out: function(stdout) {
                               //out=stdout
                               resolve(stdout);
