@@ -5,6 +5,11 @@
 - Preprocess parallel data
 - Fine-tune
 
+add modified fairseq Folder
+```
+cd fairseq
+pip install --editable ./
+```
 
 mbart50 continual pretraining with mbart objective:
 ```
