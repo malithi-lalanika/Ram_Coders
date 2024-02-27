@@ -9,6 +9,11 @@ python /userdirs/ram_coders/DEEP/deep_ft/fair/fairseq/scripts/spm_encode.py \
     --inputs /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/input_data/valid.en /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/input_data/valid.si  \
     --outputs /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/valid.bpe.en_XX /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/valid.bpe.si_LK 
 
+python /userdirs/ram_coders/DEEP/deep_ft/fair/fairseq/scripts/spm_encode.py \
+    --model /userdirs/ram_coders/DEEP/data/mbart.cc25.v2/sentence.bpe.model \
+    --inputs /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/input_data/test.en /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/input_data/test.si  \
+    --outputs /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/test.bpe.en_XX /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/test.bpe.si_LK 
+
 
 
 DICT_s="/userdirs/ram_coders/DEEP/preprocess_en_to_si/Only_NER/output_data/preprocess/dict.en_XX.txt"
@@ -19,6 +24,7 @@ fairseq-preprocess \
   --target-lang si_LK \
   --trainpref /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/train.bpe \
   --validpref /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/valid.bpe \
+  --testpref /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/test.bpe \
   --destdir /userdirs/ram_coders/DEEP/preprocess_en_to_si/news_wiki_blog_data/output_data/preprocess \
   --thresholdtgt 0 \
   --thresholdsrc 0 \
