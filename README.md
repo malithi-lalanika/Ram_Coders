@@ -1,5 +1,5 @@
 ## Steps:
-1. Setup environments
+1. ### Setup environments
 
 Mainly in here there are two environments.
 - ner
@@ -46,7 +46,7 @@ cd NMT_Final_Code/Fairseq_Folder for evaluate If needed/fairseq
 pip install --editable ./
 ```
 
-2. Noising monolingual data.
+2. ### Noising monolingual data.
 
 Go to the Noising/noise_for_en_to_si_tt.py file and change below paths:
 - model_checkpoint (model was uploaded to the google drive)
@@ -67,7 +67,7 @@ Then after running you should rename four output files as below.
 - valid_si.csv -> valid.si
 - valid_en.csv -> valid.en
 
-3. Preprocess noised data for mbart obective pretrain
+3. ### Preprocess noised data for mbart obective pretrain
 
 First you have to download the mbart50 model
 ```
@@ -89,7 +89,7 @@ source activate test
 bash preprocess_for_mbart50_pretrain.sh
 ```
 
-4. Preprocess parallel data 
+4. ### Preprocess parallel data 
 
 Go to the NMT_Final_Code/train_scripts/preprocess_for_finetune.sh file and change below paths
 - spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
@@ -107,7 +107,7 @@ source activate test
 bash preprocess_for_finetune.sh.sh
 ```
 
-5. Pretrain with mbart Objective
+5. ### Pretrain with mbart Objective
 
 Prior to the Pretraining,
 
@@ -132,7 +132,7 @@ source activate mbart50
 bash train-scripts/pretrain-si-mbart50.sh
 ```
 
-6. Continual pretraining with Deep Objective
+6. ### Continual pretraining with Deep Objective
 
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and change below paths
 
@@ -150,7 +150,7 @@ source activate mbart50
 bash train-scripts/pretrain-si-mbart50-deep.sh
 ```
 
-7. Fine-tune
+7. ### Fine-tune
 
 Go to the NMT_Final_Code/train_scripts/finetune-si-mbart50.sh file and change below paths
 
@@ -168,7 +168,7 @@ source activate mbart50
 bash train-scripts/finetune-si-mbart50.sh [0]
 ```
 
-8. Evaluate
+8. ### Evaluate
 
 Go to the NMT_Final_Code/train_scripts/eval-si-mbart50.sh file and change below paths
 
@@ -183,14 +183,14 @@ cd NMT_Final_Code/train_scripts
 source activate test
 bash train-scripts/eval-si-mbart50.sh [0]
 ```
-9. Get Predicted text for testing sentences and return the sacrebleu 
+9. ### Get Predicted text for testing sentences and return the sacrebleu 
 
 First change the paths for these commands. true.txt file was uploadedto the Google Drive and preds.txt is the predicted sentences file. 
 ```
 cat /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/en_XX_si_LK.txt | grep -P "^H" |sort -V |cut -f 3-  > /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 sacrebleu -tok 'none' -s 'none' /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/true.txt< /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 ```
-10. Get translate for a input sentence (Additional task)
+10. ### Get translate for a input sentence (Additional task)
 
 - Add a english sentence to the NMT_Final_Code/get_translate_mbart50/translate_input.txt file.
 - Change required paths in the NMT_Final_Code/get_translate_mbart50/get-translate.sh file.
