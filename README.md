@@ -132,7 +132,26 @@ source activate mbart50
 bash train-scripts/pretrain-si-mbart50.sh
 ```
 
-### 6. Continual pretraining with Deep Objective
+### 6. Preprocess noised data for deep obective pretrain
+
+Go to the NMT_Final_Code/train_scripts/preprocess_for_deep_pretrain.sh file and change below paths
+- spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
+- sentence.bpe.model (inside the mbart50 model folder)
+- 4 input paths ( 4 output files of sep 2)
+- 4 outputs paths
+- DICT path ( there is an dictionary inside the mbart50 model folder and create duplcate one and rename those with languages in here en_XX and si_LK)
+- trainpref, validpref and testpref same as the outputs paths without language exension
+- destdir path 
+
+Run Below command to the preproccessing:
+```
+cd NMT_Final_Code/train_scripts
+source activate test
+bash preprocess_for_deep_pretrain.sh
+```
+
+
+### 7. Continual pretraining with Deep Objective
 
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and change below paths
 
@@ -150,7 +169,7 @@ source activate mbart50
 bash train-scripts/pretrain-si-mbart50-deep.sh
 ```
 
-### 7. Fine-tune
+### 8. Fine-tune
 
 Go to the NMT_Final_Code/train_scripts/finetune-si-mbart50.sh file and change below paths
 
@@ -168,7 +187,7 @@ source activate mbart50
 bash train-scripts/finetune-si-mbart50.sh [0]
 ```
 
-### 8. Evaluate
+### 9. Evaluate
 
 Go to the NMT_Final_Code/train_scripts/eval-si-mbart50.sh file and change below paths
 
@@ -183,14 +202,14 @@ cd NMT_Final_Code/train_scripts
 source activate test
 bash train-scripts/eval-si-mbart50.sh [0]
 ```
-### 9. Get Predicted text for testing sentences and return the sacrebleu 
+### 10. Get Predicted text for testing sentences and return the sacrebleu 
 
 First change the paths for these commands. true.txt file was uploadedto the Google Drive and preds.txt is the predicted sentences file. 
 ```
 cat /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/en_XX_si_LK.txt | grep -P "^H" |sort -V |cut -f 3-  > /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 sacrebleu -tok 'none' -s 'none' /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/true.txt< /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 ```
-### 10. Get translate for a input sentence (Additional task)
+### 11. Get translate for a input sentence (Additional task)
 
 - Add a english sentence to the NMT_Final_Code/get_translate_mbart50/translate_input.txt file.
 - Change required paths in the NMT_Final_Code/get_translate_mbart50/get-translate.sh file.
