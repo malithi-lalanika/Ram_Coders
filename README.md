@@ -140,7 +140,7 @@ Go to the NMT_Final_Code/train_scripts/preprocess_for_deep_pretrain.sh file and 
 - 4 input paths ( 4 output files of sep 2)
 - 4 outputs paths
 - DICT path ( there is an dictionary inside the mbart50 model folder and create duplcate one and rename those with languages in here en_XX and si_LK)
-- trainpref, validpref and testpref same as the outputs paths without language exension
+- trainpref and same as the outputs paths without language exension
 - destdir path 
 
 Run Below command to the preproccessing:
