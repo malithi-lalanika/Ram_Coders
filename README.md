@@ -10,7 +10,7 @@ conda env create -f ner.yml
 ```
 Activate the environment using
 ```
-soure activate ner
+source activate ner
 ```
 Check the dependencies using
 ```
@@ -37,9 +37,9 @@ pip install --editable ./
 
 - test (Additional If needed)
 
-This environment was used to the preprocessing and evaluaing tasks since the mbart50 environment was not supported. If mbart50 is supported you can use that environment for those tasks as well.
+This environment was used to the preprocessing and evaluating  tasks since the mbart50 environment was not supported. If mbart50 is supported you can use that environment for those tasks as well.
 
-For create the test environmet you can simply create a test.yml file containing "name: test" as the first line. (use a copy of mbart50.yml file for this). Then install the fairseq modifed folder. 
+For create the test environment you can simply create a test.yml file containing "name: test" as the first line. (use a copy of mbart50.yml file for this). Then install the fairseq modified folder. 
 
 ```
 cd NMT_Final_Code/Fairseq_Folder for evaluate If needed/fairseq
@@ -67,7 +67,7 @@ Then after running you should rename four output files as below.
 - valid_si.csv -> valid.si
 - valid_en.csv -> valid.en
 
-### 3. Preprocess noised data for mbart obective pretrain
+### 3. Preprocess noised data for mbart objective pretrain
 
 First you have to download the mbart50 model
 ```
@@ -79,10 +79,10 @@ Go to the NMT_Final_Code/train_scripts/preprocess_for_mbart50_pretrain.sh file a
 - sentence.bpe.model (inside the mbart50 model folder)
 - inputs and outputs folder paths
 - DICT path ( there is an dictionary inside the mbart50 model folder and rename it with the language in here it is si_LK)
-- trainpref, validpref same as the outputs paths without language exension
+- trainpref, validpref same as the outputs paths without language extension
 - destdir path 
 
-Run Below command to the preproccessing:
+Run Below command to the preprocessing:
 ```
 cd NMT_Final_Code/train_scripts
 source activate test
@@ -96,11 +96,11 @@ Go to the NMT_Final_Code/train_scripts/preprocess_for_finetune.sh file and chang
 - sentence.bpe.model (inside the mbart50 model folder)
 - 6 input paths (path containing the parallel data)
 - 6 outputs paths
-- DICT path ( there is an dictionary inside the mbart50 model folder and create duplcate one and rename those with languages in here en_XX and si_LK)
-- trainpref, validpref and testpref same as the outputs paths without language exension
+- DICT path ( there is an dictionary inside the mbart50 model folder and create duplicate one and rename those with languages in here en_XX and si_LK)
+- trainpref, validpref and testpref same as the outputs paths without language extension
 - destdir path 
 
-Run Below command to the preproccessing:
+Run Below command to the preprocessing:
 ```
 cd NMT_Final_Code/train_scripts
 source activate test
@@ -119,7 +119,7 @@ Go to the NMT_Final_Code/fairseq/fairseq/tasks/multilingual_context_shard_denois
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocced parallel data)
+- bin_dir (path of the preprocessed parallel data)
 - SAVE
 - after "fairseq-train" preprocessed pretrain data folder path(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files)
 - restore-file (mbart50 model path)
@@ -132,18 +132,18 @@ source activate mbart50
 bash train-scripts/pretrain-si-mbart50.sh
 ```
 
-### 6. Preprocess noised data for deep obective pretrain
+### 6. Preprocess noised data for deep objective pretrain
 
 Go to the NMT_Final_Code/train_scripts/preprocess_for_deep_pretrain.sh file and change below paths
 - spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
 - sentence.bpe.model (inside the mbart50 model folder)
-- 4 input paths ( 4 output files of sep 2)
+- 4 input paths ( 4 output files of step 2)
 - 4 outputs paths
-- DICT path ( there is an dictionary inside the mbart50 model folder and create duplcate one and rename those with languages in here en_XX and si_LK)
-- trainpref and same as the outputs paths without language exension
+- DICT path ( there is an dictionary inside the mbart50 model folder and create duplicate one and rename those with languages in here en_XX and si_LK)
+- trainpref and validpref same as the outputs paths without language extension
 - destdir path 
 
-Run Below command to the preproccessing:
+Run Below command to the preprocessing:
 ```
 cd NMT_Final_Code/train_scripts
 source activate test
@@ -156,7 +156,7 @@ bash preprocess_for_deep_pretrain.sh
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocced parallel data)
+- bin_dir (path of the preprocessed parallel data)
 - SAVE
 - after "fairseq-train" preprocessed pretrain data folder path(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files)
 - restore-file (checkpoint_best.pt from the mbart objective pretrain outputs)
@@ -174,7 +174,7 @@ bash train-scripts/pretrain-si-mbart50-deep.sh
 Go to the NMT_Final_Code/train_scripts/finetune-si-mbart50.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocced parallel data)
+- bin_dir (path of the preprocessed parallel data)
 - SAVE
 - lang_list ( this is located in NMT_Final_Code/fairseq/examples/multilingual path)
 - pretrained_model (checkpoint_best.pt from the deep objective pretrain outputs)
@@ -191,7 +191,7 @@ bash train-scripts/finetune-si-mbart50.sh [0]
 
 Go to the NMT_Final_Code/train_scripts/eval-si-mbart50.sh file and change below paths
 
-- bin_dir (path of the preprocced parallel data)
+- bin_dir (path of the preprocessed parallel data)
 - lang_list ( this is located in NMT_Final_Code/fairseq/examples/multilingual path)
 - path (checkpoint_best.pt or checkpoint_last.pt from the finetune outputs)
 - output file path
@@ -204,14 +204,14 @@ bash train-scripts/eval-si-mbart50.sh [0]
 ```
 ### 10. Get Predicted text for testing sentences and return the sacrebleu 
 
-First change the paths for these commands. true.txt file was uploadedto the Google Drive and preds.txt is the predicted sentences file. 
+First change the paths for these commands. true.txt file was uploaded to the Google Drive and preds.txt is the predicted sentences file. 
 ```
 cat /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/en_XX_si_LK.txt | grep -P "^H" |sort -V |cut -f 3-  > /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 sacrebleu -tok 'none' -s 'none' /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/true.txt< /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 ```
 ### 11. Get translate for a input sentence (Additional task)
 
-- Add a english sentence to the NMT_Final_Code/get_translate_mbart50/translate_input.txt file.
+- Add an english sentence to the NMT_Final_Code/get_translate_mbart50/translate_input.txt file.
 - Change required paths in the NMT_Final_Code/get_translate_mbart50/get-translate.sh file.
 - Run Below command to get the translation
 ```
