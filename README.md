@@ -153,6 +153,13 @@ bash preprocess_for_deep_pretrain.sh
 
 ### 7. Continual pretraining with Deep Objective
 
+Prior to the Pretraining,
+
+Go to the NMT_Final_Code/fairseq/fairseq/tasks/multilingual_context_shard_denoising.py file and change below paths
+
+- args.data ( preprocessed pretrain data folder path)
+- add dict.txt file (same dict.txt inside the mbart50 folder) for that folder if it does not exists. ( for "dictionary" variable)
+
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and change below paths
 
 - Repo
