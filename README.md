@@ -243,4 +243,10 @@ sacrebleu -tok 'none' -s 'none' /userdirs/ram_coders/DEEP/deep_ft/outputs/finetu
 ```
 bash NMT_Final_Code/get_translate_mbart50/get-translate.sh.sh
 ```
+or remove 3rd and 4th line from get-translate.sh.sh and run below.
+```
+source activate test
+bash NMT_Final_Code/get_translate_mbart50/get-translate.sh.sh
+```
+
 - translated sentence was written to the NMT_Final_Code/get_translate_mbart50/translation_output.txt file.
