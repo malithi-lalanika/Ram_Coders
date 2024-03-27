@@ -67,6 +67,8 @@ Then after running you should rename four output files as below.
 - valid_si.csv -> valid.si
 - valid_en.csv -> valid.en
 
+After that remove the first line header of those 4 files. (sentences or noise_sentences_with_translit_and_translate)
+
 ### 3. Preprocess noised data for mbart objective pretrain
 
 First you have to download the mbart50 model
