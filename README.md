@@ -230,7 +230,7 @@ bash train-scripts/eval-si-mbart50.sh [0]
 ```
 ### 10. Get Predicted text for testing sentences and return the sacrebleu 
 
-First change the paths for these commands. true.txt file was uploaded to the Google Drive and preds.txt is the predicted sentences file. 
+First change the paths for these commands. true.txt file was uploaded to the Google Drive and preds.txt is the predicted sentences file (you can add any_path/preds.txt file is no need to upload). en_XX_si_LK.txt is the output of step 9.
 ```
 cat /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/en_XX_si_LK.txt | grep -P "^H" |sort -V |cut -f 3-  > /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
 sacrebleu -tok 'none' -s 'none' /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/true.txt< /userdirs/ram_coders/DEEP/deep_ft/outputs/finetune/en_to_si_further/mbart50-ft-mbart-obj/preds.txt
