@@ -113,15 +113,15 @@ Prior to the Pretraining,
 
 Go to the NMT_Final_Code/fairseq/fairseq/tasks/multilingual_context_shard_denoising.py file and change below paths
 
-- args.data ( preprocessed pretrain data folder path)
+- args.data ( preprocessed pretrain data folder path from step 3)
 - add dict.txt file (same dict.txt inside the mbart50 folder) for that folder if it does not exists. ( for "dictionary" variable)
 
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocessed parallel data)
+- bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files)
+- after "fairseq-train" preprocessed pretrain data folder path from step 3(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files)
 - restore-file (mbart50 model path)
 - save-dir (model saving path and the log file path)
 
@@ -157,15 +157,15 @@ Prior to the Pretraining,
 
 Go to the NMT_Final_Code/fairseq/fairseq/tasks/multilingual_context_shard_denoising.py file and change below paths
 
-- args.data ( preprocessed pretrain data folder path)
+- args.data ( preprocessed pretrain data folder path from step 6)
 - add dict.txt file (same dict.txt inside the mbart50 folder) for that folder if it does not exists. ( for "dictionary" variable)
 
 Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocessed parallel data)
+- bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files)
+- after "fairseq-train" preprocessed pretrain data folder path from step 6(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files)
 - restore-file (checkpoint_best.pt from the mbart objective pretrain outputs)
 - save-dir (model saving path and the log file path)
 
@@ -181,7 +181,7 @@ bash train-scripts/pretrain-si-mbart50-deep.sh
 Go to the NMT_Final_Code/train_scripts/finetune-si-mbart50.sh file and change below paths
 
 - Repo
-- bin_dir (path of the preprocessed parallel data)
+- bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
 - lang_list ( this is located in NMT_Final_Code/fairseq/examples/multilingual path)
 - pretrained_model (checkpoint_best.pt from the deep objective pretrain outputs)
@@ -198,7 +198,7 @@ bash train-scripts/finetune-si-mbart50.sh [0]
 
 Go to the NMT_Final_Code/train_scripts/eval-si-mbart50.sh file and change below paths
 
-- bin_dir (path of the preprocessed parallel data)
+- bin_dir (path of the preprocessed parallel data from step 4)
 - lang_list ( this is located in NMT_Final_Code/fairseq/examples/multilingual path)
 - path (checkpoint_best.pt or checkpoint_last.pt from the finetune outputs)
 - output file path
