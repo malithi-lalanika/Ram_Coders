@@ -128,7 +128,7 @@ Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50.sh file and change be
 - Repo
 - bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path from step 3(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files)
+- after "fairseq-train" preprocessed pretrain data folder path from step 3(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files. Also if it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
 - restore-file (mbart50 model path)
 - save-dir (model saving path and the log file path)
 
@@ -184,7 +184,7 @@ Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and chan
 - Repo
 - bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path from step 6(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files)
+- after "fairseq-train" preprocessed pretrain data folder path from step 6(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files. Also if it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
 - restore-file (checkpoint_best.pt from the mbart objective pretrain outputs)
 - save-dir (model saving path and the log file path)
 
