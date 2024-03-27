@@ -156,11 +156,11 @@ bash preprocess_for_deep_pretrain.sh
 ```
 Rename files inside the preprocess folder as below.
 
-- train.si.--.bin  -> train.tgt.bin
-- train.si.--.idx  -> train.tgt.idx
+- train.--si_LK.bin  -> train.tgt.bin
+- train.--si_LK.idx  -> train.tgt.idx
 
-- train.en.--.bin  -> train.src.bin
-- train.en.--.idx  -> train.src.idx
+- train.--en_XX.bin  -> train.src.bin
+- train.--en_XX.idx  -> train.src.idx
 
 Repeat the same way for valid data.
 
