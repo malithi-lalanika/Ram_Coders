@@ -88,6 +88,11 @@ cd NMT_Final_Code/train_scripts
 source activate test
 bash preprocess_for_mbart50_pretrain.sh
 ```
+Rename files inside the preprocess folder as below.
+train.bin
+train.idx
+valid.bin
+valid.idx
 
 ### 4. Preprocess parallel data 
 
@@ -149,7 +154,19 @@ cd NMT_Final_Code/train_scripts
 source activate test
 bash preprocess_for_deep_pretrain.sh
 ```
+Rename files inside the preprocess folder as below.
 
+train.si.--.bin  -> train.tgt.bin
+train.si.--.idx  -> train.tgt.idx
+
+train.en.--.bin  -> train.src.bin
+train.en.--.idx  -> train.src.idx
+
+Repeat the same way for valid data.
+
+After that if you get an error like .mask files are not there follow below guidelines.
+  duplicate your .tgt 4 files.( train.tgt.bin,  train.tgt.idx,  valid.tgt.bin,  valid.tgt.idx)
+  rename those from .tgt -> .mask (  train.tgt.bin -> train.mask.bin )
 
 ### 7. Continual pretraining with Deep Objective
 
