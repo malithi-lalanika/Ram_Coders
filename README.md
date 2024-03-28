@@ -79,7 +79,8 @@ tar -xzvf mbart50.pretrained.tar.gz
 Go to the NMT_Final_Code/train_scripts/preprocess_for_mbart50_pretrain.sh file and change below paths
 - spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
 - sentence.bpe.model (inside the mbart50 model folder)
-- inputs and outputs folder paths
+- inputs ( train.si, valid.si file paths from step 2) 
+- outputs folder paths
 - DICT path ( there is an dictionary inside the mbart50 model folder and rename it with the language in here it is si_LK)
 - trainpref, validpref same as the outputs paths without language extension
 - destdir path 
@@ -101,7 +102,7 @@ Rename files inside the preprocess folder as below.
 Go to the NMT_Final_Code/train_scripts/preprocess_for_finetune.sh file and change below paths
 - spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
 - sentence.bpe.model (inside the mbart50 model folder)
-- 6 input paths (path containing the parallel data)
+- 6 input paths (train.si, valid.si, test.si, train.en, valid.en, test.en file paths from Google drive parallel dataset)
 - 6 outputs paths
 - DICT path ( there is an dictionary inside the mbart50 model folder and create duplicate one and rename those with languages in here en_XX and si_LK)
 - trainpref, validpref and testpref same as the outputs paths without language extension
@@ -144,7 +145,7 @@ bash train-scripts/pretrain-si-mbart50.sh
 Go to the NMT_Final_Code/train_scripts/preprocess_for_deep_pretrain.sh file and change below paths
 - spm_encode.py file path (Add the file path inside the fairseq folder of test environment)
 - sentence.bpe.model (inside the mbart50 model folder)
-- 4 input paths ( 4 output files of step 2)
+- 4 input paths ( train.si, valid.si, train.en, valid.en from step 2)
 - 4 outputs paths
 - DICT path ( there is an dictionary inside the mbart50 model folder and create duplicate one and rename those with languages in here en_XX and si_LK)
 - trainpref and validpref same as the outputs paths without language extension
