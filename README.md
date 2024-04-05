@@ -189,7 +189,7 @@ Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and chan
 - Repo
 - bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path from step 6(If it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
+- after "fairseq-train" preprocessed pretrain data folder path from step 6(If it asks for files inside a folder like Si_XX you can move them to the folder)
 - restore-file (checkpoint_best.pt from the mbart objective pretrain outputs)
 - save-dir (model saving path and the log file path)
 
