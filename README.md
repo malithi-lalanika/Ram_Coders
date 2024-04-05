@@ -129,7 +129,7 @@ Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50.sh file and change be
 - Repo
 - bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path from step 3(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details. While renaming make sure to keep a backup of the original preprocess files. Also if it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
+- after "fairseq-train" preprocessed pretrain data folder path from step 3
 - restore-file (mbart50 model path)
 - save-dir (model saving path and the log file path)
 
@@ -159,17 +159,21 @@ bash preprocess_for_deep_pretrain.sh
 ```
 Rename files inside the preprocess folder as below.
 
-- train.--si_LK.bin  -> train.tgt.bin
-- train.--si_LK.idx  -> train.tgt.idx
+- train.en_XX-si_LK.si_LK.bin  -> train0.tgt.bin
+- train.en_XX-si_LK.si_LK.idx  -> train0.tgt.idx
 
-- train.--en_XX.bin  -> train.src.bin
-- train.--en_XX.idx  -> train.src.idx
+- train.en_XX-si_LK.en_XX.bin  -> train0.src.bin
+- train.en_XX-si_LK.en_XX.idx  -> train0.src.idx
 
-Repeat the same way for valid data.
+- valid.en_XX-si_LK.si_LK.bin  -> valid.tgt.bin
+- valid.en_XX-si_LK.si_LK.idx  -> valid.tgt.idx
+
+- valid.en_XX-si_LK.en_XX.bin  -> valid.src.bin
+- valid.en_XX-si_LK.en_XX.idx  -> valid.src.idx
 
 After that if you get an error like .mask files are not there follow below guidelines.
-  - duplicate your .tgt 4 files.( train.tgt.bin,  train.tgt.idx,  valid.tgt.bin,  valid.tgt.idx)
-  - rename those from .tgt -> .mask (  train.tgt.bin -> train.mask.bin )
+  - duplicate your .tgt 4 files.( train0.tgt.bin,  train0.tgt.idx,  valid.tgt.bin,  valid.tgt.idx)
+  - rename those from .tgt -> .mask (  train0.tgt.bin -> train0.mask.bin )
 
 ### 7. Continual pretraining with Deep Objective
 
@@ -185,7 +189,7 @@ Go to the NMT_Final_Code/train_scripts/pretrain-si-mbart50-deep.sh file and chan
 - Repo
 - bin_dir (path of the preprocessed parallel data from step 4)
 - SAVE
-- after "fairseq-train" preprocessed pretrain data folder path from step 6(When running sometimes got error like files are not located. For that case you can simply rename these files according to the error. As I remembered it should be changed like train0.bin train0.idx. You can simply check the error details.While renaming make sure to keep a backup of the original preprocess files. Also if it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
+- after "fairseq-train" preprocessed pretrain data folder path from step 6(If it asks for files inside a folder like Si_XX you can move them to the folder and rename it)
 - restore-file (checkpoint_best.pt from the mbart objective pretrain outputs)
 - save-dir (model saving path and the log file path)
 
